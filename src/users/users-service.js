@@ -3,14 +3,7 @@ const UsersService = {
         return knex
         .select('aip_users.id','aip_users.username','aip_users.fullname')
         .from('aip_users')
-    },
-    /*getByUsername(knex, username, password){
-        return knex 
-        .from('aip_users')
-        .select('*')
-        .where('username',username)
-        .first()
-    },*/
+    },    
     insertNewUser(knex, newUser){
         return knex
             .insert(newUser)

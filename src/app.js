@@ -5,9 +5,10 @@ const cors = require('cors')
 const helmet = require('helmet')
 const logger = require('./logger')
 const { NODE_ENV } = require('./config')
-const usersRouter = require('./users/users-router.js')
-const postsRouter = require('./posts/posts-router.js')
-const bookmarksRouter = require('./bookmarks/bookmarks-router.js')
+const usersRouter = require('./users/users-router')
+const postsRouter = require('./posts/posts-router')
+const bookmarksRouter = require('./bookmarks/bookmarks-router')
+const multerUploads = require('./middleware/multer')
 
 const app = express()
 
@@ -35,9 +36,17 @@ app.use('/api/posts',postsRouter)
 app.use('/api/bookmarks',bookmarksRouter)
 
 app.get('/',(req,res)=>{
-    res.send('Hello, world!')
+    res.send('Welcome to AIP!')
 })
+app.post('/api/upload', multerUploads, (req, res) => {
+    const body = req.body
+    console.log(req.body)
+    console.log('req.file : ', req.file);
+    res.status(201)
+    //res.send(`req.body :' ${body}`)
+    //console.log('req.body :', req.body);
 
+});
 app.use(function errorHandler(error, req, res, next){
     let response
     if(NODE_ENV === 'production'){
