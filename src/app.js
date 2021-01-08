@@ -10,7 +10,7 @@ const postsRouter = require('./posts/posts-router')
 const bookmarksRouter = require('./bookmarks/bookmarks-router')
 
 //new code
-const {resolve} = require('path');
+
 const {uploader, cloudinaryConfig} = require('./config/cloudinaryConfig')
 const {multerUploads, dataUri} = require('./middleware/multer');
 const { urlencoded, json } = require('body-parser');
