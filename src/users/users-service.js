@@ -4,6 +4,13 @@ const UsersService = {
         .select('aip_users.id','aip_users.username','aip_users.fullname')
         .from('aip_users')
     },
+    /*getByUsername(knex, username, password){
+        return knex 
+        .from('aip_users')
+        .select('*')
+        .where('username',username)
+        .first()
+    },*/
     insertNewUser(knex, newUser){
         return knex
             .insert(newUser)
@@ -18,6 +25,13 @@ const UsersService = {
             .from('aip_users')
             .select('*')
             .where('id',id)
+            .first()
+    },
+    getUserByUsername(knex, username){
+        return knex 
+            .select('id','username','password')
+            .from('aip_users')
+            .where('username',username)
             .first()
     },
     deleteUser(knex, id){

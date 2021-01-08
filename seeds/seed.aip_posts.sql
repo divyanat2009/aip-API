@@ -1,9 +1,12 @@
 INSERT INTO aip_posts(user_id, title, link, by, content, post_type, date_created)
 VALUES
-(1,'The Heart of a Woman','https://www.penguinrandomhouse.com/books/3954/the-heart-of-a-woman-by-maya-angelou/','Maya Angelou','In The Heart of a Woman, Maya Angelou leaves California with her son, Guy, to move to New York. There she enters the society and world of black artists and writers, reads her work at the Harlem Writers Guild, and begins to take part in the struggle of black Americans for their rightful place in the world. In the meantime, her personal life takes an unexpected turn.','book',now() - '1 days'::INTERVAL),
-(1,'Health Solutions Library','https://chriskresser.com/health-solutions-library/','Chris Kresser','','lifestyle',now() - '1 days'::INTERVAL),
-(2,'The Healing Kitchen,'https://www.thepaleomom.com/books/the-healing-kitchen/','Sarah Ballantyne','','recipe',now() - '1 days'::INTERVAL)
-(1,'Reinventing the Body, Resurrecting the Soul','','Deepak Chopra','Transformation can''t stop with the body, however; it must involve the soul. The soul–seemingly invisible, aloof, and apart from the material world–actually creates the body. Only by going to the level of the soul will you access your full potential, bringing more intelligence, creativity, and awareness into every aspect of your life.','book',now() - '1 days'::INTERVAL),
-(3,'Awakening Your True Self into 2021','https://mysolluna.com/blog/2021/01/04/awakening-your-true-self-into-2021-episode-539/','Kimberly Snyder','','podcast',now() - '1 days'::INTERVAL),
-(2,'An amazing event','https://www.google.com/','','Stay Inspired. Stay Connected.','event',now() - '1 days'::INTERVAL);
+(1,'','','','Gluten free garlic, rosemary crackers','recipe',now() - '1 days'::INTERVAL),
+(1,'Enzymes keep us beautiful','https://mysolluna.com/blog/2020/03/07/enzymes-keep-us-beautiful/','','Kimberly Snyder','lifestyle',now() - '1 days'::INTERVAL),
+(2,'New Year’s True Beauty Rituals – Trade Resolutions for Rituals!','','Kimberly Snyder','','lifestyle',now() - '1 days'::INTERVAL),
+(2,'The Autoimmune Solution','','Amy Myers','Considered the definitive guide to reversing autoimmunity, The Autoimmune Solution lays out a revolutionary, step-by-step approach that restores the body to its natural healthy state in 30 days by eliminating toxic foods, introducing restorative ingredients, and identifying environmental toxins.','book',now() - '1 days'::INTERVAL),
+
+(3,'','','','In order to love who you are, you cannot hate the experiences that shaped you','recipe',now() - '1 days'::INTERVAL),
+(1,'Perfect Pie Crust','https://www.thepaleomom.com/perfect-pie-crust-aip/','','','recipe',now() - '1 days'::INTERVAL),
+(1,'The Autoimmune Solution Cookbook','https://www.amymyersmd.com/books/','','Amy Myers','book',now() - '1 days'::INTERVAL),
+(2,'Build your wellness routine','https://store.draxe.com/pages/routine-builder-start-page','Josh Axe','','lifestyle',now() - '1 days'::INTERVAL)
 ;
