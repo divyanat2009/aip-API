@@ -27,7 +27,7 @@ describe(`aip endpoints`,()=>{
             it(`responds with Hello, World`,()=>{
                 return supertest(app)
                 .get('/')
-              //  .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect('Hello, world!')
             })
         })//end context GET/
@@ -38,7 +38,7 @@ describe(`aip endpoints`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/posts')
-               // .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end of context no posts
@@ -61,7 +61,7 @@ describe(`aip endpoints`,()=>{
             it(`responds with all posts`,()=>{
                 return supertest(app)
                 .get('/api/posts')
-               // .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200)
                 .expect(res=>{
                     expect(res.body.id).to.eql(testPosts.id)
@@ -106,8 +106,8 @@ describe(`aip endpoints`,()=>{
                     expect(res.body.content).to.eql(newPost.content)
                     expect(res.body.post_type).to.eql(newPost.post_type)
                     expect(res.body.user_id).to.eql(newPost.user_id)
-                    expect(res.body).to.have.property('id')
-                    expect(res.headers.location).to.eql(`/api/posts/${res.body.id}`)
+                    expect(res.body).to.have.property('post_id')
+                    //expect(res.headers.location).to.eql(`/api/posts/${res.body.id}`)
                 })
         })//end it create connection
 
@@ -124,6 +124,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .post(`/api/posts`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newPost)
                     .expect(400, {
                         error: { message: `Missing ${field} in request body` }
@@ -139,6 +140,7 @@ describe(`aip endpoints`,()=>{
 
             return supertest(app)
                 .post(`/api/posts`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newPostWrongType)
                 .expect(400, {
                     error: { message : `Post type must be either recipe, lifestyle, event ,book, or podcast` }
@@ -155,6 +157,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .get(`/api/posts/${postId}`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(404, {error:{message: `Post doesn't exist` }})
             })//end of it 404
         })//end of context no posts in db
@@ -182,6 +185,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .get(`/api/posts/${postId}`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200)
                     .expect(res=>{
                         expect(res.body.post_type).to.eql(expectedPost.post_type)
@@ -198,6 +202,7 @@ describe(`aip endpoints`,()=>{
                 const postId = 123456
                   return supertest(app)
                   .delete(`/api/posts/${postId}`)
+                  .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                   .expect(404, { error: {message: `Post doesn't exist` } })
               })
         })//end of context no post in db
@@ -225,6 +230,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .delete(`/api/posts/${idToRemove}`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(204)
                     .then(res =>
                         supertest(app)

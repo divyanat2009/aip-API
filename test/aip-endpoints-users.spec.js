@@ -26,7 +26,7 @@ describe(`aip endpoints`,()=>{
             it(`responds with Hello, World`,()=>{
                 return supertest(app)
                 .get('/')
-              //  .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect('Hello, world!')
             })
         })//end context GET/
@@ -37,7 +37,7 @@ describe(`aip endpoints`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/users')
-               // .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end of context no users
@@ -54,7 +54,7 @@ describe(`aip endpoints`,()=>{
             it(`responds with all users`,()=>{
                 return supertest(app)
                 .get('/api/users')
-               // .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200)
                 .expect(res=>{
                     expect(res.body.id).to.eql(testUsers.id)
@@ -76,6 +76,7 @@ describe(`aip endpoints`,()=>{
             }
             return supertest(app)
                 .post('/api/users')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newUser)
                 .expect(res=>{
                     expect(res.body.username).to.eql(newUser.username)
@@ -117,6 +118,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .get(`/api/users/${userId}`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(404, {error:{message: `User doesn't exist` }})
             })//end of it 404
         })//end of context no notes in db
@@ -138,6 +140,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .get(`/api/users/${userId}`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200)
                     .expect(res=>{
                         expect(res.body.username).to.eql(expectedUser.username)
@@ -154,6 +157,7 @@ describe(`aip endpoints`,()=>{
                 const userId = 123456
                   return supertest(app)
                   .delete(`/api/users/${userId}`)
+                  .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                   .expect(404, { error: {message: `User doesn't exist` } })
               })
         })//end of context no users in db
@@ -175,6 +179,7 @@ describe(`aip endpoints`,()=>{
 
                 return supertest(app)
                     .delete(`/api/users/${idToRemove}`)
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(204)
                     .then(res =>
                         supertest(app)

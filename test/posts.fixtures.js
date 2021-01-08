@@ -62,7 +62,6 @@ function makePostsArray() {
     "id":8,
     "user_id":2,
     "title":"Moving Meditation",
-    "start_date":"2021-01-07T16:28:32.615Z",
     "content":"Sheng Zhen Meditation is a practice of moving meditation that quiets the mind, open heart, and healthy body.",
     "post_type":"event",
     "link":"https://www.meetup.com/Sheng-Zhen-Meditation-of-Santa-Barbara/events/fdkkvrycccbkb/",

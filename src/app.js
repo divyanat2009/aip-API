@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
-//const logger = require('./logger')
+const logger = require('./logger')
 const { NODE_ENV } = require('./config')
 const usersRouter = require('./users/users-router')
 const postsRouter = require('./posts/posts-router')
@@ -25,8 +25,10 @@ app.use(helmet())
 app.use(cors())
 //new code
 app.use(json())
+
+app.use('/api/upload', cloudinaryConfig);
 //validate API_Token
-/*app.use(function validateBearerToken(req, res, next){
+app.use(function validateBearerToken(req, res, next){
     const apiToken = process.env.API_TOKEN
     const authToken = req.get('Authorization')
     if(!authToken || authToken.split(' ')[1] !== apiToken){
@@ -34,18 +36,7 @@ app.use(json())
         return res.status(401).json({ error: 'Unauthorized request'})
     }
     next()
-})*/
-
-app.use('/api/users',usersRouter)
-app.use('/api/posts',postsRouter)
-app.use('/api/bookmarks',bookmarksRouter)
-
-app.get('/',(req,res)=>{
-    res.send('Welcome to AIP!')
 })
-app.use('/api/upload', cloudinaryConfig);
-
-//app.get('/api/upload', (req, res) => res.sendFile(resolve(__dirname, '../public/index.html')));
 
 app.post('/api/upload', multerUploads, (req, res) => {
     //res.send('That worked')
@@ -54,7 +45,7 @@ app.post('/api/upload', multerUploads, (req, res) => {
         return uploader.upload(file).then((result) => {
             const image = result.url;
             return res.status(200).json({
-                messge: 'Your image has been uploded successfully to cloudinary',
+                message: 'Your image has been uploded successfully to cloudinary',
                 data: {
                 image
                 }
@@ -66,8 +57,15 @@ app.post('/api/upload', multerUploads, (req, res) => {
                 err
                 }
         }))
-    }//end of if 
+    }
 });        
+app.use('/api/users',usersRouter)
+app.use('/api/posts',postsRouter)
+app.use('/api/bookmarks',bookmarksRouter)
+
+app.get('/',(req,res)=>{
+    res.send('Welcome to AIP!')
+})
     
 app.use(function errorHandler(error, req, res, next){
     let response
@@ -80,5 +78,4 @@ app.use(function errorHandler(error, req, res, next){
     }
     res.status(500).json(response)
 })
-
 module.exports = app
