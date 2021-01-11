@@ -3,7 +3,7 @@ const UsersService = {
         return knex
         .select('aip_users.id','aip_users.username','aip_users.fullname')
         .from('aip_users')
-    },    
+    },
     insertNewUser(knex, newUser){
         return knex
             .insert(newUser)
