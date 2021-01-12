@@ -304,3 +304,4 @@
 {"message":"Unauthorized request to path: /api/posts/divyanat","level":"error"}
 {"message":"Unauthorized request to path: /api/users","level":"error"}
 {"message":"Unauthorized request to path: /api/posts/divyanat","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
