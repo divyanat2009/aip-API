@@ -77,8 +77,50 @@ postsRouter
           .status(201)
              .location(path.posix.join(req.originalUrl + `/${post.id}`))
              .json(serializedPost(post))
-            })            
+            })  
+          
 
+    /*if(!user_id){
+         return res.status(400).json({
+         error: { message : `Missing user_id in request body` }
+       })
+    }
+    if(!post_type){
+       return res.status(400).json({
+       error: { message : `Missing post_type in request body` }
+    })
+    }
+    if(validPostTypes.indexOf(post_type)===-1){
+      return res.status(400).json({
+      error: { message : `Post type must be either recipe, lifestyle, event ,book, or podcast` }
+    })
+    }
+    if(post_type==='event'&&(!title || !content || !link)){
+      return res.status(400).json({
+      error: { message : `Event post type must be include a title, content and link` }
+      })
+    }
+    if(post_type==='lifestyle'&&(!title || !by || !link)){
+       return res.status(400).json({
+       error: { message : `Lifestyle post type must be include a title, by and link` }
+       })
+    }
+    if(post_type==='podcast'&&(!title || !content || !link)){
+      return res.status(400).json({
+      error: { message : `Podcast post type must be include a title, content and link` }
+      })
+    }
+    if(post_type==='book'&&(!title || !by )){
+      return res.status(400).json({
+      error: { message : `Book post type must be include a title and by` }
+      })
+    }
+    if(post_type==='recipe' &&(!title || !content)){
+      return res.status(400).json({
+      error: { message : `Recipe post type must be include a title and content` }
+    })
+    }*/
+    
     })
 
   })
