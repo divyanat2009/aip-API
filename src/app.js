@@ -8,14 +8,8 @@ const { NODE_ENV } = require('./config')
 const usersRouter = require('./users/users-router.js')
 const postsRouter = require('./posts/posts-router.js')
 const connectionsRouter = require('./connections/connections-router.js')
-const bookmarksRouter = require('./bookmarks/bookmarks-router.js')
 
-//new code
-const {resolve} = require('path');
-const {uploader, cloudinaryConfig} = require('./config/cloudinaryConfig.js')
-const {multerUploads, dataUri} = require('./middleware/multer.js');
-
-const { urlencoded, json } = require('body-parser');
+const { json } = require('body-parser');
 
 const app = express()
 
@@ -29,9 +23,6 @@ app.use(cors())
 
 //new code
 app.use(json())
-
-
-
 //validate API_Token
 app.use(function validateBearerToken(req, res, next){
     const apiToken = process.env.API_TOKEN
@@ -44,13 +35,9 @@ app.use(function validateBearerToken(req, res, next){
     next()
 })
 
-
-
 app.use('/api/users',usersRouter)
 app.use('/api/posts',postsRouter)
 app.use('/api/connections',connectionsRouter)
-
-
 
 app.get('/',(req,res)=>{
     res.send('Hello, world!')
