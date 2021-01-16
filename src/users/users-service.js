@@ -20,13 +20,6 @@ const UsersService = {
             .where('id',id)
             .first()
     },
-    getUserByUsername(knex, username){
-        return knex 
-            .select('id','username','password')
-            .from('aip_users')
-            .where('username',username)
-            .first()
-    },
     deleteUser(knex, id){
         return knex
             .from('aip_users')

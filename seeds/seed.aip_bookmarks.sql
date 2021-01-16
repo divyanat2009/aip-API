@@ -1,6 +1,6 @@
 INSERT INTO aip_bookmarks (user_id, post_id, content)
 VALUES
-(1,1,"I loved this post"),
+(1,1,""),
 (1,3,""),
 (1,7,""),
 (2,2,""),
