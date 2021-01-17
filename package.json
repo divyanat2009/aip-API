@@ -1,7 +1,7 @@
 {
   "name": "aip-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"# aip-api\"",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
@@ -40,7 +40,18 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
-    "nodemon": "^2.0.6",    
+    "nodemon": "^2.0.6",
     "supertest": "^6.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanat2009/aip-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/divyanat2009/aip-api/issues"
+  },
+  "homepage": "https://github.com/divyanat2009/aip-api#readme"
 }
