@@ -1,7 +1,7 @@
 const express = require('express')
 const xss = require('xss')
 const path = require('path')
-const UsersService = require('./users-service')
+const UsersService = require('./users-service.js')
 
 const usersRouter = express.Router()
 const jsonParser = express.json()
@@ -39,6 +39,9 @@ usersRouter
                 })
             }
         }
+        
+
+
         UsersService.insertNewUser(
             req.app.get('db'),
             newUser

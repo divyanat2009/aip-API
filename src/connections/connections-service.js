@@ -2,18 +2,18 @@ const ConnectionsService = {
     getAllConnections(knex){
         return knex
         .select('*')
-        .from('aip_connections')
+        .from('uplift_connections')
     },
     getConnectionsByUserId(knex, userId){
         return knex
         .select('*')
-        .from('aip_connections')
+        .from('uplift_connections')
         .where('user_id',userId)
     },
     insertNewConnection(knex, newConnection){
         return knex
             .insert(newConnection)
-            .into('aip_connections')
+            .into('uplift_connections')
             .returning('*')
             .then(rows=>{
                 return rows[0]
@@ -21,14 +21,14 @@ const ConnectionsService = {
     },
     getConnectionByConnectionId(knex, id){
         return knex 
-            .from('aip_connections')
+            .from('uplift_connections')
             .select('*')
             .where('id',id)
             .first()
     },
     deleteConnection(knex, id){
         return knex
-            .from('aip_connections')
+            .from('uplift_connections')
             .where({id})
             .delete()
     }
