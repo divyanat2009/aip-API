@@ -1,5 +1,5 @@
 CREATE TYPE post_type_category AS ENUM (
-    'lifestyle',
+    'music',
     'podcast',
     'recipe',
     'event',
