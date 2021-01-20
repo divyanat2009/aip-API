@@ -1,10 +1,10 @@
-INSERT INTO aip_bookmarks (user_id)
+INSERT INTO aip_bookmarks (user_id, post_id, content)
 VALUES
-(1),
-(1),
-(1),
-(2),
-(2),
-(3),
-(3)
+(1,1,''),
+(1,3,''),
+(1,7,''),
+(2,2,''),
+(2,5,''),
+(3,4,''),
+(3,6,'')
 ;
