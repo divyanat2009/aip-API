@@ -5,3 +5,7 @@ Users will be able to create an account and then post links to recipes; titles a
 
 Key Technology - Node, PostGreSQL
 The app can be viewed here - https://aip-client.divyanat2009.vercel.app/
+<<<<<<< HEAD
+"# aip-api-main" 
+=======
+>>>>>>> c4d11cad397cb5cc6d70bcf6e987d45d3015c2b0
