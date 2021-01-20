@@ -10,8 +10,10 @@ const postsRouter = require('./posts/posts-router.js')
 const connectionsRouter = require('./connections/connections-router.js')
 const bookmarksRouter = require('./bookmarks/bookmarks-router.js')
 
+//new code
 const {resolve} = require('path');
-
+const {uploader, cloudinaryConfig} = require('./config/cloudinaryConfig.js')
+const {multerUploads, dataUri} = require('./middleware/multer.js');
 
 const { urlencoded, json } = require('body-parser');
 
@@ -28,12 +30,11 @@ app.use(cors())
 //new code
 app.use(json())
 
-
+app.use('/api/upload', cloudinaryConfig);
 
 //validate API_Token
-/*app.use(function validateBearerToken(req, res, next){
+app.use(function validateBearerToken(req, res, next){
     const apiToken = process.env.API_TOKEN
-    console.log(apiToken)
     const authToken = req.get('Authorization')
 
   if(!authToken || authToken.split(' ')[1] !== apiToken){
@@ -41,9 +42,31 @@ app.use(json())
         return res.status(401).json({ error: 'Unauthorized request'})
     }
     next()
-})*/
+})
 
+app.post('/api/upload', multerUploads, (req, res) => {
+    if(req.file) {
+        
+        const file = dataUri(req);
 
+        return uploader.upload(file).then((result) => {
+            //cloudinary is returning paths with http and not https, this is temp fix 
+            const image = result.url.replace("http", "https");
+            return res.status(200).json({
+                message: 'Your image has been uploded successfully to cloudinary',
+                data: {
+                image
+                }
+            })
+        })
+        .catch((err) => res.status(400).json({
+            messge: 'someting went wrong while processing your request',
+                data: {
+                err
+                }
+        }))
+    }//end of if 
+});
 
 app.use('/api/users',usersRouter)
 app.use('/api/posts',postsRouter)
