@@ -60,4 +60,4 @@ const PostsService = {
     }
 }
 
-module.exports = PostsService
+module.exports = PostsService;

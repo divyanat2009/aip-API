@@ -114,7 +114,7 @@ postsRouter
 
             if(validPostTypes.indexOf(post_type)===-1){
                 return res.status(400).json({
-                    error: { message : `Post type must be either recipe, music, event ,book, or podcast` }
+                    error: { message : `Post type must be either reflection, music, event ,book, or podcast` }
                 })
             }
 
@@ -140,7 +140,7 @@ postsRouter
                         error: { message : `Book post type must be include a title and by` }
                     })
                 }
-                if(post_type==='recipe' && !content){
+                if(post_type==='reflection' && !content){
                     return res.status(400).json({
                         error: { message : `Reflection post type must be include a content` }
                     })
