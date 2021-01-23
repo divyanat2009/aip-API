@@ -15,6 +15,6 @@ CREATE TABLE aip_posts(
     by TEXT,
     content TEXT,
     post_type post_type_category NOT NULL,
-    date_created TIMESTAMPTZ NOT NULL DEFAULT now()
-    
-) 
+    date_created TIMESTAMPTZ NOT NULL DEFAULT now(),
+    image_path TEXT
+)
